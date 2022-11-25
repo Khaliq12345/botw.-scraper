@@ -1,5 +1,6 @@
 import os
 os.system("playwright install chromium")
+os.systemm('playwright install-deps')
 import streamlit as st
 from playwright.sync_api import sync_playwright
 from bs4 import BeautifulSoup
