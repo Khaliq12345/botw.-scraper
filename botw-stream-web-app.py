@@ -68,6 +68,8 @@ def scrape():
             sleep(5)
             st.balloons()
             st.success('Done!')
+            
+        st.metric('Total data scraped', value = len(df))
         st.dataframe(df)
 
         csv = df.to_csv().encode('utf-8')
