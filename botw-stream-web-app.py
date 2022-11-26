@@ -17,9 +17,9 @@ def scrape():
         browser = p.chromium.launch()
         page = browser.new_page(user_agent=ua.random)
         progress = st.metric('Pages scraped', 0)
+        col1, col2 = st.columns(2)
         for x in range(1, int(pages)):
-            progress.metric('Pages Scraped', x)
-            st.text(f"page {x}")
+            col1.metric('Pages Scraped', x)
             page.goto(f"https://botw.org/{category}/{x}", wait_until= 'commit')
             try:
                 page.wait_for_selector('.justify-content-between:nth-child(1) h5')
@@ -68,10 +68,8 @@ def scrape():
         df = pd.DataFrame(company_list)
         with st.spinner("Loading..."):
             sleep(5)
-            st.balloons()
-            st.success('Done!')
             
-        st.metric('Total data scraped', value = len(df))
+        col2.metric('Total data scraped', value = len(df))
         st.dataframe(df)
 
         csv = df.to_csv().encode('utf-8')
@@ -98,6 +96,7 @@ if __name__ =='__main__':
         pages = st.number_input('Number of pages you wish to scrape')
         button = st.form_submit_button('scrape')
     if button:
-        st.text('Scraping started')
         scrape()
+        st.balloons()
+        st.success('Done!')
         
