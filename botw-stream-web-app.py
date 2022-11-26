@@ -86,8 +86,8 @@ if __name__ =='__main__':
     with st.form('Scraper form'):
         category = st.selectbox(
         "What category will you like to scrape?",
-        ("automotive", "business", "health", 'computers', 'home-and-family', 
-        'home-services', 'lawyers-and-attorneys', 'personal-services', 'recreation', 'reference', 'restaurants', 'shopping')
+        ("automotive", "business", "health", 'computers-and-it', 'home-and-family-1', 
+        'home-services', 'lawyers', 'personal-services', 'recreation-and-hobbies', 'reference-28', 'restaurants', 'shopping')
            )
         pages = st.number_input('Number of pages you wish to scrape')
         button = st.form_submit_button('scrape')
