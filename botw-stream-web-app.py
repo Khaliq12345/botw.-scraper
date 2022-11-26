@@ -18,47 +18,49 @@ def scrape():
         for x in range(1, int(pages)):
             st.text(f"page {x}")
             page.goto(f"https://botw.org/{category}/{x}", wait_until= 'commit')
-            page.wait_for_selector('.justify-content-between:nth-child(1) h5')
-            html = page.inner_html('.description > .container')
-            soup = BeautifulSoup(html, 'html.parser')
-            cards = soup.select('.lock')
+            try:
+                page.wait_for_selector('.justify-content-between:nth-child(1) h5')
+                html = page.inner_html('.description > .container')
+                soup = BeautifulSoup(html, 'html.parser')
+                cards = soup.select('.lock')
 
-            for card in cards:
-                try:
-                    name = card.select_one('h5').text
-                except:
-                    name = None
-                try:
-                    address = card.select_one('strong').text
-                except:
-                    address = None
-                try:
-                    description = card.select_one('strong+ p').text
-                except:
-                    description = None
-                try:
-                    website = card.select_one('.listing_website_url a')['href']
-                except:
-                    website = None
-                try:
-                    phone = card.select_one('.ml-1').text
-                except:
-                    phone = None
-                try:
-                    star = card.select_one('.list-5 a').text
-                except:
-                    star = None
+                for card in cards:
+                    try:
+                        name = card.select_one('h5').text
+                    except:
+                        name = None
+                    try:
+                        address = card.select_one('strong').text
+                    except:
+                        address = None
+                    try:
+                        description = card.select_one('strong+ p').text
+                    except:
+                        description = None
+                    try:
+                        website = card.select_one('.listing_website_url a')['href']
+                    except:
+                        website = None
+                    try:
+                        phone = card.select_one('.ml-1').text
+                    except:
+                        phone = None
+                    try:
+                        star = card.select_one('.list-5 a').text
+                    except:
+                        star = None
 
-                company_info = {
-                    'Name': name,
-                    'Address': address,
-                    'Description': description,
-                    'Website': website,
-                    'Phone': phone,
-                    'Review star': star
-                }
-                company_list.append(company_info)
-            
+                    company_info = {
+                        'Name': name,
+                        'Address': address,
+                        'Description': description,
+                        'Website': website,
+                        'Phone': phone,
+                        'Review star': star
+                    }
+                    company_list.append(company_info)
+            except:
+                pass
 
         df = pd.DataFrame(company_list)
         st.dataframe(df)
