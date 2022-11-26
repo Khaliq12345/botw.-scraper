@@ -63,7 +63,7 @@ def scrape():
                 pass
 
         df = pd.DataFrame(company_list)
-        st.table(df)
+        st.dataframe(df)
 
         csv = df.to_csv().encode('utf-8')
         st.download_button(
@@ -79,6 +79,7 @@ if __name__ =='__main__':
     st.title('BOTW.ORG SCRAPER')
     st.caption('1. Note that all categories should be in lowercase')
     st.caption('2. Check the listing of the category you wish on the website to know the total pages to avoid error')
+    st.caption('3. Fields to be scraped are: Company Name, Address, Phone, Website, About and Review score')
     st.markdown('Top categories includes: auotmative, buisness, computer, health e.t.c...', unsafe_allow_html=True)
     st.caption('Check out more category here https://botw.org/directory/')
 
