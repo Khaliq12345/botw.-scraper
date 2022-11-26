@@ -75,8 +75,8 @@ def scrape():
 
 if __name__ =='__main__':
     st.title('BOTW.ORG SCRAPER')
-    st.caption('1. Note that all category to be input should be in lowercase')
-    st.caption('2. Check the listing of the category you wish to scrape to know the total pages to avoid error')
+    st.caption('1. Note that all categories should be in lowercase')
+    st.caption('2. Check the listing of the category you wish on the website to know the total pages to avoid error')
     st.markdown('Top categories includes: auotmative, buisness, computer, health e.t.c...', unsafe_allow_html=True)
     st.caption('Check out more category here https://botw.org/directory/')
 
