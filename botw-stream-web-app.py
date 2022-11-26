@@ -84,7 +84,7 @@ if __name__ =='__main__':
     st.caption('Check out more category here https://botw.org/directory/')
 
     with st.form('Scraper form'):
-           category = st.selectbox(
+        category = st.selectbox(
         "What category will you like to scrape?",
         ("automotive", "business", "health", 'computers', 'home-and-family', 
         'home-services', 'lawyers-and-attorneys', 'personal-services', 'recreation', 'reference', 'restaurants', 'shopping')
