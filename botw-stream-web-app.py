@@ -63,7 +63,7 @@ def scrape():
                 pass
 
         df = pd.DataFrame(company_list)
-        st.dataframe(df)
+        st.table(df)
 
         csv = df.to_csv().encode('utf-8')
         st.download_button(
