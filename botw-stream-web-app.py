@@ -13,7 +13,7 @@ company_list = []
 
 def scrape():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch()
         page = browser.new_page(user_agent=ua.random)
         for x in range(1, int(pages)):
             print(f"page {x}")
