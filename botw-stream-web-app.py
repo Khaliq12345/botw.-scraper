@@ -16,7 +16,9 @@ def scrape():
     with sync_playwright() as p:
         browser = p.chromium.launch()
         page = browser.new_page(user_agent=ua.random)
+        progress = st.metric('Pages scraped', 0)
         for x in range(1, int(pages)):
+            progress.metric('Pages Scraped', x)
             st.text(f"page {x}")
             page.goto(f"https://botw.org/{category}/{x}", wait_until= 'commit')
             try:
