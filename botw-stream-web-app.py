@@ -16,10 +16,10 @@ def scrape():
     with sync_playwright() as p:
         browser = p.chromium.launch()
         page = browser.new_page(user_agent=ua.random)
-        progress = st.metric('Pages scraped', 0)
         col1, col2 = st.columns(2)
+        progress = col1.metric('Pages Scraped', 0)
         for x in range(1, int(pages)):
-            col1.metric('Pages Scraped', x)
+            progress.metric('Pages Scraped', x)
             page.goto(f"https://botw.org/{category}/{x}", wait_until= 'commit')
             try:
                 page.wait_for_selector('.justify-content-between:nth-child(1) h5')
