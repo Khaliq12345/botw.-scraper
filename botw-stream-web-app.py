@@ -1,5 +1,6 @@
 import os
 os.system("playwright install chromium")
+from time import sleep
 import streamlit as st
 import asyncio
 from playwright.sync_api import sync_playwright
@@ -63,6 +64,10 @@ def scrape():
                 pass
 
         df = pd.DataFrame(company_list)
+        with st.spinner("Loading..."):
+            sleep(5)
+            st.balloons()
+            st.success('Done!')
         st.dataframe(df)
 
         csv = df.to_csv().encode('utf-8')
@@ -91,5 +96,4 @@ if __name__ =='__main__':
     if button:
         st.text('Scraping started')
         scrape()
-        st.balloons()
-        st.success('Success')
+        
