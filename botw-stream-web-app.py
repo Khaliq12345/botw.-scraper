@@ -16,7 +16,7 @@ def scrape():
         browser = p.chromium.launch()
         page = browser.new_page(user_agent=ua.random)
         for x in range(1, int(pages)):
-            print(f"page {x}")
+            st.text(f"page {x}")
             page.goto(f"https://botw.org/{category}/{x}", wait_until= 'commit')
             page.wait_for_selector('.justify-content-between:nth-child(1) h5')
             html = page.inner_html('.description > .container')
